@@ -10,9 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Clonar tu repo
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true  # Importante: permite que se use el token del Actions bot
+          fetch-depth: 0            # Necesario para historial completo
 
+      # Publicar en GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
