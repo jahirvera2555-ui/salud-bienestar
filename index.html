@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salud & Bienestar — Información clara y práctica</title>
+  <meta name="description" content="Consejos de salud y bienestar basados en buenas prácticas: nutrición, ejercicio, sueño y salud mental. Herramientas como una calculadora de IMC incluidas." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💚</text></svg>">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: #121932;
+      --muted: #9fb0d0;
+      --text: #eaf1ff;
+      --accent: #53d6a2;
+      --accent-2:#6aa3ff;
+      --danger:#ff6b6b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;background:var(--bg);color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;border-radius:12px}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    header{position:sticky;top:0;background:linear-gradient(180deg, rgba(11,16,32,.9), rgba(11,16,32,.6));backdrop-filter:saturate(150%) blur(6px);z-index:10;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand b{font-weight:750;letter-spacing:.3px}
+    .badge{font-size:12px;padding:.25rem .5rem;background:rgba(83,214,162,.15);border:1px solid rgba(83,214,162,.4);border-radius:999px;color:var(--accent)}
+    .menu{display:flex;gap:18px}
+    .menu a{opacity:.9}
+    .menu a:hover{opacity:1}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:center;padding:46px 0}
+    .hero h1{font-size:clamp(28px, 5vw, 44px);line-height:1.1;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 22px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 16px;border:1px solid rgba(255,255,255,.12);background:#1a2346;color:white;box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#04121a;border:0;font-weight:700}
+
+    .glass{background:linear-gradient(180deg, rgba(26,35,70,.8), rgba(26,35,70,.55)); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+
+    /* Cards */
+    .grid{display:grid;gap:18px}
+    .grid.cards{grid-template-columns:repeat(4,1fr)}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 6px;font-size:18px}
+    .muted{color:var(--muted)}
+
+    /* BMI */
+    .bmi-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .field{display:flex;flex-direction:column;gap:8px}
+    .field input{padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:#0e1530;color:var(--text)}
+    .result{padding:16px;border-radius:12px;background:#0e1530;border:1px dashed rgba(255,255,255,.15)}
+    .result strong{font-size:20px}
+
+    /* Articles */
+    .article{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:start;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg, rgba(26,35,70,.55), rgba(26,35,70,.35))}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.06);margin-top:36px}
+    .foot{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:22px 0;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 950px){
+      .hero-inner{grid-template-columns:1fr}
+      .grid.cards{grid-template-columns:repeat(2,1fr)}
+      .bmi-wrap{grid-template-columns:1fr}
+      .article{grid-template-columns:1fr}
+    }
+    @media (max-width: 560px){
+      .grid.cards{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="Volver al inicio">
+        <span style="font-size:22px">💚</span> <b>Salud & Bienestar</b>
+        <span class="badge">Guía práctica</span>
+      </a>
+      <nav class="menu" aria-label="Principal">
+        <a href="#temas">Temas</a>
+        <a href="#imc">Calculadora IMC</a>
+        <a href="#articulos">Artículos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio" class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="glass">
+          <h1>Información clara para cuidar tu salud, todos los días</h1>
+          <p>Contenido práctico sobre nutrición, actividad física, sueño y salud mental. Pequeños cambios, gran impacto ✨</p>
+          <div class="cta">
+            <a class="btn primary" href="#temas">Explorar temas</a>
+            <a class="btn" href="#imc">Probar calculadora IMC</a>
+          </div>
+          <p class="muted" style="margin-top:12px;font-size:14px">⚠️ Esta web no reemplaza el consejo de un profesional de la salud.</p>
+        </div>
+        <div>
+          <img alt="Ilustración abstracta con formas fluidas y colores verdes y azules que evocan bienestar" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2353d6a2'/><stop offset='100%' stop-color='%236aa3ff'/></linearGradient></defs><rect width='1200' height='900' fill='%230b1020'/><g opacity='0.7'><circle cx='250' cy='300' r='200' fill='url(%23g)'/><circle cx='700' cy='220' r='160' fill='url(%23g)'/><circle cx='900' cy='540' r='240' fill='url(%23g)'/><circle cx='420' cy='620' r='180' fill='url(%23g)'/></g></svg>">
+        </div>
+      </div>
+    </section>
+
+    <!-- Temas / Cards -->
+    <section id="temas" style="margin-top:18px">
+      <h2 style="margin:0 0 10px">¿Qué encontrarás?</h2>
+      <p class="muted" style="margin:0 0 16px">Pilares básicos del bienestar con recomendaciones accionables.</p>
+      <div class="grid cards">
+        <article class="card" aria-labelledby="t1">
+          <h3 id="t1">🥗 Nutrición</h3>
+          <p class="muted">Platos balanceados, hidratación, porciones y lectura de etiquetas.</p>
+        </article>
+        <article class="card" aria-labelledby="t2">
+          <h3 id="t2">🏃‍♀️ Actividad física</h3>
+          <p class="muted">Rutinas sencillas para iniciar y progresar sin lesionarte.</p>
+        </article>
+        <article class="card" aria-labelledby="t3">
+          <h3 id="t3">😴 Sueño</h3>
+          <p class="muted">Higiene del sueño, horarios y entorno para dormir mejor.</p>
+        </article>
+        <article class="card" aria-labelledby="t4">
+          <h3 id="t4">🧠 Salud mental</h3>
+          <p class="muted">Gestión del estrés, respiración y primeros pasos de mindfulness.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Calculadora IMC -->
+    <section id="imc" style="margin-top:26px">
+      <h2 style="margin:0 0 10px">Calculadora de IMC</h2>
+      <p class="muted" style="margin:0 0 16px">El Índice de Masa Corporal (IMC) es una <em>estimación</em> del estado de peso según altura. Úsalo solo como referencia.</p>
+      <div class="bmi-wrap">
+        <form id="bmiForm" class="card" aria-describedby="imc-help">
+          <div class="field">
+            <label for="peso">Peso (kg)</label>
+            <input id="peso" name="peso" inputmode="decimal" placeholder="Ej: 68" required>
+          </div>
+          <div class="field">
+            <label for="altura">Altura (cm)</label>
+            <input id="altura" name="altura" inputmode="decimal" placeholder="Ej: 170" required>
+          </div>
+          <div class="cta" style="margin-top:10px">
+            <button class="btn primary" type="submit">Calcular IMC</button>
+            <button class="btn" type="reset" id="limpiar">Limpiar</button>
+          </div>
+          <p id="imc-help" class="muted" style="margin-top:6px;font-size:14px">No contempla composición corporal ni condiciones clínicas específicas.</p>
+        </form>
+        <div class="result" aria-live="polite" id="bmiOut">
+          <strong>Resultado</strong>
+          <p class="muted" style="margin:.5rem 0 0">Ingresa tu peso y altura para calcular tu IMC.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artículos -->
+    <section id="articulos" style="margin-top:26px">
+      <h2 style="margin:0 0 10px">Artículos recientes</h2>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px">
+        <article class="article">
+          <img alt="Tazón con ensalada colorida" src="https://images.unsplash.com/photo-1543353071-10c8ba85a904?q=80&w=600&auto=format&fit=crop" loading="lazy" />
+          <div>
+            <h3>Cómo armar un plato equilibrado en 5 pasos</h3>
+            <p class="muted">Aprende a combinar verduras, proteínas, carbohidratos y grasas saludables sin complicarte.</p>
+            <a class="btn" href="#">Leer más</a>
+          </div>
+        </article>
+        <article class="article">
+          <img alt="Zapatillas y cronómetro" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop" loading="lazy" />
+          <div>
+            <h3>Rutina de 20 minutos para empezar a moverte</h3>
+            <p class="muted">Una propuesta sencilla sin equipamiento para retomar el hábito.</p>
+            <a class="btn" href="#">Leer más</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contacto / Newsletter -->
+    <section id="contacto" style="margin-top:26px">
+      <h2 style="margin:0 0 10px">Recibe tips semanales</h2>
+      <form class="card" id="newsForm">
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+        <div class="cta" style="margin-top:10px">
+          <button class="btn primary" type="submit">Suscribirme</button>
+          <span class="muted" id="newsMsg" aria-live="polite" style="margin-left:8px"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <small>© <span id="year"></span> Salud & Bienestar. Para educación y orientación general.</small>
+      <small><a class="muted" href="#inicio">Volver arriba ↑</a></small>
+    </div>
+  </footer>
+
+  <script>
+    // Navegación suave
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1){e.preventDefault();document.querySelector(id)?.scrollIntoView({behavior:'smooth'});}
+      })
+    })
+
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Calculadora IMC
+    const bmiForm=document.getElementById('bmiForm');
+    const out=document.getElementById('bmiOut');
+    const limpiar=document.getElementById('limpiar');
+
+    function clasificarIMC(bmi){
+      if (bmi < 18.5) return {t:'Bajo peso', c:'var(--accent-2)'};
+      if (bmi < 25) return {t:'Peso saludable', c:'var(--accent)'};
+      if (bmi < 30) return {t:'Sobrepeso', c:'var(--danger)'};
+      return {t:'Obesidad', c:'var(--danger)'};
+    }
+
+    bmiForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const peso = parseFloat(document.getElementById('peso').value.replace(',','.'));
+      const alturaCm = parseFloat(document.getElementById('altura').value.replace(',','.'));
+      if(!peso || !alturaCm || peso<=0 || alturaCm<=0){
+        out.innerHTML = `<strong>Dato inválido</strong><p class="muted">Revisa que el peso y la altura sean números mayores que 0.</p>`;
+        return;
+      }
+      const altura = alturaCm/100;
+      const bmi = peso / (altura*altura);
+      const cls = clasificarIMC(bmi);
+      out.innerHTML = `<strong>IMC: ${bmi.toFixed(1)}</strong><p style="margin:.4rem 0">Categoría: <b style="color:${getComputedStyle(document.documentElement).getPropertyValue(cls.c) || 'white'}">${cls.t}</b></p><p class="muted">Recuerda: el IMC no distingue masa muscular de grasa corporal. Consulta a un profesional para una evaluación completa.</p>`;
+    });
+
+    limpiar.addEventListener('click', ()=>{
+      out.innerHTML = `<strong>Resultado</strong><p class="muted" style="margin:.5rem 0 0">Ingresa tu peso y altura para calcular tu IMC.</p>`;
+    });
+
+    // Newsletter (demostración sin backend)
+    document.getElementById('newsForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('newsMsg');
+      msg.textContent = '';
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        msg.textContent = 'Por favor ingresa un correo válido.';
+        return;
+      }
+      msg.textContent = '¡Listo! Te enviaremos tips pronto (demo)';
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
