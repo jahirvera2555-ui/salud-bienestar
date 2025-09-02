@@ -3,7 +3,7 @@ name: GitHub Pages
 on:
   push:
     branches:
-      - main  # rama principal
+      - main
 
 jobs:
   deploy:
@@ -15,7 +15,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # Publica desde la raíz del repo
+          github_token: ${{ secrets.GITHUB_TOKEN }} # O usa GH_PAT si repo privado
+          publish_dir: .
           publish_branch: gh-pages
           force_orphan: true
